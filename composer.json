@@ -4,7 +4,7 @@
 	"description": "Interfaces and classes to manipulate data in an east-oriented manner",
 	"keywords": [ "data", "East" ],
 	"homepage": "http://github.com/estvoyage/data",
-	"license": "BSD",
+	"license": "BSD-2-Clause",
 	"authors": [
 		{
 			"name": "Frédéric Hardy",
