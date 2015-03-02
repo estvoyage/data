@@ -3,11 +3,10 @@
 namespace estvoyage\data\data;
 
 use
-	estvoyage\data,
-	estvoyage\data\consumer
+	estvoyage\data
 ;
 
 interface delimiter
 {
-	function dataSplitterNeedDelimitedDataFromData(consumer\splitter $splitter, data\data $data);
+	function dataSplitterNeedDelimitedDataFromData(data\splitter $splitter, data\data $data);
 }
