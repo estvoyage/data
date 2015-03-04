@@ -26,7 +26,7 @@ class transparent extends units\test
 				$data = new data\data(uniqid())
 			)
 			->if(
-				$this->newTestedInstance(new mockOfData\consumer)
+				$this->newTestedInstance
 			)
 			->then
 				->object($this->testedInstance->noDelimiterInData($data))->isTestedInstance
@@ -40,26 +40,26 @@ class transparent extends units\test
 				$data = new data\data(uniqid())
 			)
 			->if(
-				$this->newTestedInstance(new mockOfData\consumer)
+				$this->newTestedInstance
 			)
 			->then
 				->object($this->testedInstance->delimitedDataIs($data))->isTestedInstance
 		;
 	}
 
-	function testDataUseDelimiter()
+	function testDataForDataConsumerUseDataDelimiter()
 	{
 		$this
 			->given(
-				$dataConsumer = new mockOfData\consumer,
 				$data = new data\data(uniqid()),
+				$dataConsumer = new mockOfData\consumer,
 				$dataDelimiter = new mockOfData\data\delimiter
 			)
 			->if(
-				$this->newTestedInstance($dataConsumer)
+				$this->newTestedInstance
 			)
 			->then
-				->object($this->testedInstance->dataUseDelimiter($data, $dataDelimiter))->isTestedInstance
+				->object($this->testedInstance->dataForDataConsumerUseDataDelimiter($data, $dataConsumer, $dataDelimiter))->isTestedInstance
 				->mock($dataConsumer)->receive('newData')->withArguments($data)->once
 		;
 	}
