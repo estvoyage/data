@@ -15,6 +15,38 @@ class data extends units\test
 		$this->testedClass
 			->isFinal
 			->extends('estvoyage\value\string')
+			->implements('estvoyage\data\consumer')
+		;
+	}
+
+	function testNewData()
+	{
+		$this
+			->given(
+				$emptyData = $this->newTestedInstance(''),
+				$data = $this->newTestedInstance(uniqid())
+			)
+
+			->if(
+				$this->newTestedInstance('')
+			)
+			->then
+				->object($this->testedInstance->newData($data))
+					->isIdenticalTo($data)
+
+			->if(
+				$this->newTestedInstance(uniqid())
+			)
+			->then
+				->object($this->testedInstance->newData($emptyData))
+					->isTestedInstance
+
+			->if(
+				$this->newTestedInstance(uniqid())
+			)
+			->then
+				->object($this->testedInstance->newData($data))
+					->isEqualTo($this->newTestedInstance($this->testedInstance . $data))
 		;
 	}
 
