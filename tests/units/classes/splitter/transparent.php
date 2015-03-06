@@ -19,48 +19,52 @@ class transparent extends units\test
 		;
 	}
 
-	function testNoDelimiterInData()
+	function testNewData()
 	{
 		$this
 			->given(
-				$data = new data\data(uniqid())
-			)
-			->if(
-				$this->newTestedInstance(new mockOfData\consumer)
-			)
-			->then
-				->object($this->testedInstance->noDelimiterInData($data))->isTestedInstance
-		;
-	}
-
-	function testDelimitedDataIs()
-	{
-		$this
-			->given(
-				$data = new data\data(uniqid())
-			)
-			->if(
-				$this->newTestedInstance(new mockOfData\consumer)
-			)
-			->then
-				->object($this->testedInstance->delimitedDataIs($data))->isTestedInstance
-		;
-	}
-
-	function testDataUseDelimiter()
-	{
-		$this
-			->given(
-				$dataConsumer = new mockOfData\consumer,
 				$data = new data\data(uniqid()),
+				$dataConsumer = new mockOfData\consumer
+			)
+			->if(
+				$this->newTestedInstance($dataConsumer)
+			)
+			->then
+				->object($this->testedInstance->newData($data))->isTestedInstance
+				->mock($dataConsumer)->receive('newData')->withArguments($data)->once
+		;
+	}
+
+	function testDataUseDataDelimiter()
+	{
+		$this
+			->given(
+				$data = new data\data(uniqid()),
+				$dataConsumer = new mockOfData\consumer,
 				$dataDelimiter = new mockOfData\data\delimiter
 			)
 			->if(
 				$this->newTestedInstance($dataConsumer)
 			)
 			->then
-				->object($this->testedInstance->dataUseDelimiter($data, $dataDelimiter))->isTestedInstance
+				->object($this->testedInstance->dataUseDataDelimiter($data, $dataDelimiter))->isTestedInstance
 				->mock($dataConsumer)->receive('newData')->withArguments($data)->once
+		;
+	}
+
+	function testDataProviderIs()
+	{
+		$this
+			->given(
+				$dataConsumer = new mockOfData\consumer,
+				$dataProvider = new mockOfData\provider
+			)
+			->if(
+				$this->newTestedInstance($dataConsumer)
+			)
+			->then
+				->object($this->testedInstance->dataProviderIs($dataProvider))->isTestedInstance
+				->mock($dataProvider)->receive('dataConsumerIs')->withArguments($this->testedInstance)->once
 		;
 	}
 }

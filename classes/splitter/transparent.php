@@ -17,28 +17,22 @@ class transparent implements data\splitter
 		$this->dataConsumer = $dataConsumer;
 	}
 
-	function dataConsumerIs(data\consumer $dataConsumer)
-	{
-		$splitter = clone $this;
-		$splitter->dataConsumer = $dataConsumer;
-
-		return $splitter;
-	}
-
-	function dataUseDelimiter(data\data $data, data\data\delimiter $dataDelimiter)
+	function newData(data\data $data)
 	{
 		$this->dataConsumer->newData($data);
 
 		return $this;
 	}
 
-	function noDelimiterInData(data\data $data)
+	function dataUseDataDelimiter(data\data $data, data\data\delimiter $dataDelimiter)
 	{
-		return $this;
+		return $this->newData($data);
 	}
 
-	function delimitedDataIs(data\data $data)
+	function dataProviderIs(data\provider $dataProvider)
 	{
+		$dataProvider->dataConsumerIs($this);
+
 		return $this;
 	}
 }
