@@ -2,10 +2,7 @@
 
 namespace estvoyage\data;
 
-interface splitter
+interface splitter extends data\consumer
 {
-	function dataConsumerIs(consumer $consumer);
 	function dataUseDelimiter(data $data, data\delimiter $dataDelimiter);
-	function noDelimiterInData(data $data);
-	function delimitedDataIs(data $data);
 }

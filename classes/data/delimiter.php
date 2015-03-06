@@ -8,5 +8,5 @@ use
 
 interface delimiter
 {
-	function dataSplitterNeedDelimitedDataFromData(data\splitter $splitter, data\data $data);
+	function newDataFromDataSplitter(data\data $data, data\splitter $splitter);
 }
