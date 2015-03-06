@@ -5,7 +5,8 @@ namespace estvoyage\data\tests\units;
 require __DIR__ . '/../runner.php';
 
 use
-	estvoyage\data\tests\units
+	estvoyage\data\tests\units,
+	mock\estvoyage\data as mockOfData
 ;
 
 class data extends units\test
@@ -48,6 +49,28 @@ class data extends units\test
 				->object($this->testedInstance->newData($data))
 					->isEqualTo($this->newTestedInstance($this->testedInstance . $data))
 		;
+	}
+
+	function testDataProviderIs()
+	{
+		$this
+			->given(
+				$dataProvider = new mockOfData\provider
+			)
+			->if(
+				$this->newTestedInstance('')
+			)
+			->then
+				->object($this->testedInstance->dataProviderIs($dataProvider))->isTestedInstance
+				->mock($dataProvider)
+					->receive('dataConsumerIs')
+						->withArguments($this->testedInstance)->once
+		;
+	}
+
+	function testConstructorWithoutAnyArgument()
+	{
+		$this->castToString($this->newTestedInstance)->isEmpty;
 	}
 
 	/**

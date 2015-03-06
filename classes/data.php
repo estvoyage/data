@@ -4,7 +4,7 @@ namespace estvoyage\data;
 
 final class data extends \estvoyage\value\string implements consumer
 {
-	function __construct($value)
+	function __construct($value = '')
 	{
 		$domainException = null;
 
@@ -31,5 +31,12 @@ final class data extends \estvoyage\value\string implements consumer
 			default:
 				return $this;
 		}
+	}
+
+	function dataProviderIs(provider $provider)
+	{
+		$provider->dataConsumerIs($this);
+
+		return $this;
 	}
 }
