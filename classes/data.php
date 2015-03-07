@@ -18,6 +18,13 @@ final class data extends \estvoyage\value\string implements consumer
 		}
 	}
 
+	function dataProviderIs(provider $provider)
+	{
+		$provider->dataConsumerIs($this);
+
+		return $this;
+	}
+
 	function newData(data $data)
 	{
 		switch (true)
@@ -33,10 +40,8 @@ final class data extends \estvoyage\value\string implements consumer
 		}
 	}
 
-	function dataProviderIs(provider $provider)
+	function noMoreData()
 	{
-		$provider->dataConsumerIs($this);
-
 		return $this;
 	}
 }

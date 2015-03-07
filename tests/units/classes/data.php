@@ -20,6 +20,23 @@ class data extends units\test
 		;
 	}
 
+	function testDataProviderIs()
+	{
+		$this
+			->given(
+				$dataProvider = new mockOfData\provider
+			)
+			->if(
+				$this->newTestedInstance('')
+			)
+			->then
+				->object($this->testedInstance->dataProviderIs($dataProvider))->isTestedInstance
+				->mock($dataProvider)
+					->receive('dataConsumerIs')
+						->withArguments($this->testedInstance)->once
+		;
+	}
+
 	function testNewData()
 	{
 		$this
@@ -51,21 +68,9 @@ class data extends units\test
 		;
 	}
 
-	function testDataProviderIs()
+	function testNoMoreData()
 	{
-		$this
-			->given(
-				$dataProvider = new mockOfData\provider
-			)
-			->if(
-				$this->newTestedInstance('')
-			)
-			->then
-				->object($this->testedInstance->dataProviderIs($dataProvider))->isTestedInstance
-				->mock($dataProvider)
-					->receive('dataConsumerIs')
-						->withArguments($this->testedInstance)->once
-		;
+		$this->object($this->newTestedInstance->noMoreData())->isTestedInstance;
 	}
 
 	function testConstructorWithoutAnyArgument()
