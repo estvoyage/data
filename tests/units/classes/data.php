@@ -17,6 +17,7 @@ class data extends units\test
 			->isFinal
 			->extends('estvoyage\value\string')
 			->implements('estvoyage\data\consumer')
+			->implements('estvoyage\data\provider')
 		;
 	}
 
@@ -33,6 +34,23 @@ class data extends units\test
 				->object($this->testedInstance->dataProviderIs($dataProvider))->isTestedInstance
 				->mock($dataProvider)
 					->receive('dataConsumerIs')
+						->withArguments($this->testedInstance)->once
+		;
+	}
+
+	function testDataConsumerIs()
+	{
+		$this
+			->given(
+				$dataConsumer = new mockOfData\consumer
+			)
+			->if(
+				$this->newTestedInstance('')
+			)
+			->then
+				->object($this->testedInstance->dataConsumerIs($dataConsumer))->isTestedInstance
+				->mock($dataConsumer)
+					->receive('newData')
 						->withArguments($this->testedInstance)->once
 		;
 	}

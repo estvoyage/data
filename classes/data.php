@@ -2,7 +2,7 @@
 
 namespace estvoyage\data;
 
-final class data extends \estvoyage\value\string implements consumer
+final class data extends \estvoyage\value\string implements consumer, provider
 {
 	function __construct($value = '')
 	{
@@ -16,6 +16,13 @@ final class data extends \estvoyage\value\string implements consumer
 		{
 			throw new exception\domain('Data should be a string');
 		}
+	}
+
+	function dataConsumerIs(consumer $consumer)
+	{
+		$consumer->newData($this);
+
+		return $this;
 	}
 
 	function dataProviderIs(provider $provider)
