@@ -2,7 +2,7 @@
 
 namespace estvoyage\data;
 
-final class data extends \estvoyage\value\string implements consumer, provider
+final class data extends \estvoyage\value\string
 {
 	function __construct($value = '')
 	{
@@ -18,20 +18,6 @@ final class data extends \estvoyage\value\string implements consumer, provider
 		}
 	}
 
-	function dataConsumerIs(consumer $consumer)
-	{
-		$consumer->newData($this);
-
-		return $this;
-	}
-
-	function dataProviderIs(provider $provider)
-	{
-		$provider->dataConsumerIs($this);
-
-		return $this;
-	}
-
 	function newData(data $data)
 	{
 		switch (true)
@@ -45,10 +31,5 @@ final class data extends \estvoyage\value\string implements consumer, provider
 			default:
 				return $this;
 		}
-	}
-
-	function noMoreData()
-	{
-		return $this;
 	}
 }

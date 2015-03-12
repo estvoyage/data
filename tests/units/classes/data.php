@@ -16,42 +16,6 @@ class data extends units\test
 		$this->testedClass
 			->isFinal
 			->extends('estvoyage\value\string')
-			->implements('estvoyage\data\consumer')
-			->implements('estvoyage\data\provider')
-		;
-	}
-
-	function testDataProviderIs()
-	{
-		$this
-			->given(
-				$dataProvider = new mockOfData\provider
-			)
-			->if(
-				$this->newTestedInstance('')
-			)
-			->then
-				->object($this->testedInstance->dataProviderIs($dataProvider))->isTestedInstance
-				->mock($dataProvider)
-					->receive('dataConsumerIs')
-						->withArguments($this->testedInstance)->once
-		;
-	}
-
-	function testDataConsumerIs()
-	{
-		$this
-			->given(
-				$dataConsumer = new mockOfData\consumer
-			)
-			->if(
-				$this->newTestedInstance('')
-			)
-			->then
-				->object($this->testedInstance->dataConsumerIs($dataConsumer))->isTestedInstance
-				->mock($dataConsumer)
-					->receive('newData')
-						->withArguments($this->testedInstance)->once
 		;
 	}
 
@@ -84,11 +48,6 @@ class data extends units\test
 				->object($this->testedInstance->newData($data))
 					->isEqualTo($this->newTestedInstance($this->testedInstance . $data))
 		;
-	}
-
-	function testNoMoreData()
-	{
-		$this->object($this->newTestedInstance->noMoreData())->isTestedInstance;
 	}
 
 	function testConstructorWithoutAnyArgument()
