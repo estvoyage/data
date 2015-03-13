@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ace551749439af7ae9298ebc31eaaf43",
+    "hash": "71f6331f7e735c59a15151b819a0db83",
     "packages": [
         {
             "name": "estvoyage/value",
@@ -12,12 +12,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/estvoyage/value.git",
-                "reference": "6263897e14159a9d719d66059824402d348dbd88"
+                "reference": "cb88b1423eb143ef60bce69a3cd1bacd8f60c8c6"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/estvoyage/value/zipball/6263897e14159a9d719d66059824402d348dbd88",
-                "reference": "6263897e14159a9d719d66059824402d348dbd88",
+                "url": "https://api.github.com/repos/estvoyage/value/zipball/cb88b1423eb143ef60bce69a3cd1bacd8f60c8c6",
+                "reference": "cb88b1423eb143ef60bce69a3cd1bacd8f60c8c6",
                 "shasum": ""
             },
             "require": {
@@ -29,13 +29,12 @@
             "type": "library",
             "autoload": {
                 "psr-4": {
-                    "estvoyage\\value\\tests\\units\\": "tests/units",
                     "estvoyage\\value\\": "classes"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "BSD"
+                "BSD-2-Clause"
             ],
             "authors": [
                 {
@@ -52,7 +51,7 @@
                 "Whole value",
                 "value"
             ],
-            "time": "2015-02-17 19:57:19"
+            "time": "2015-02-26 12:04:10"
         }
     ],
     "packages-dev": [
@@ -62,7 +61,7 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/mageekguy/atoum.git",
-                "reference": "6551465a870584e6fbdc5646160762179254cc4a"
+                "reference": "b377408df8792cada8b8c3f2f18ad4a5973430a9"
             },
             "require": {
                 "ext-hash": "*",
@@ -90,7 +89,7 @@
                 ]
             },
             "license": [
-                "BSD"
+                "BSD-2-Clause"
             ],
             "authors": [
                 {
@@ -123,7 +122,7 @@
                 "test",
                 "unit testing"
             ],
-            "time": "2015-02-17 20:15:58"
+            "time": "2015-03-13 20:10:02"
         }
     ],
     "aliases": [],
