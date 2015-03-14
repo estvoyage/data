@@ -36,7 +36,7 @@ class blackhole extends units\test
 
 	function testNoMoreData()
 	{
-		$this->object($this->testedInstance->noMoreData($data))->isTestedInstance;
+		$this->object($this->newTestedInstance->noMoreData())->isTestedInstance;
 	}
 
 	function testDataProviderIs()
