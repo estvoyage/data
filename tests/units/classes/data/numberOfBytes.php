@@ -8,7 +8,7 @@ use
 	estvoyage\data\tests\units
 ;
 
-class length extends units\test
+class numberOfBytes extends units\test
 {
 	function testClass()
 	{

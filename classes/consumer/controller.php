@@ -8,5 +8,5 @@ use
 
 interface controller
 {
-	function dataNotWriteByDataConsumerIs(data\consumer $dataConsumer, data\data $data);
+	function numberOfBytesConsumedByDataConsumerIs(data\consumer $dataConsumer, data\data\numberOfBytes $numberOfBytes);
 }
