@@ -12,9 +12,9 @@ final class buffer implements data\consumer\controller
 		$data
 	;
 
-	function __construct(data\data $data)
+	function __construct(data\data $data = null)
 	{
-		$this->data = $data;
+		$this->data = $data ?: new data\data;
 	}
 
 	function newData(data\data $data)

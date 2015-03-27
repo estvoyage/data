@@ -27,7 +27,7 @@ class buffer extends units\test
 				$data = new data\data(uniqid())
 			)
 			->if(
-				$this->newTestedInstance(new data\data)
+				$this->newTestedInstance
 			)
 			->then
 				->object($this->testedInstance->newData($data))
@@ -41,17 +41,16 @@ class buffer extends units\test
 		$this
 			->given(
 				$dataConsumer = new mockOfData\consumer,
-				$numberOfBytes = new data\data\numberOfBytes,
-				$data = new data\data
+				$numberOfBytes = new data\data\numberOfBytes
 			)
 			->if(
-				$this->newTestedInstance($data)
+				$this->newTestedInstance
 			)
 			->then
 				->object($this->testedInstance->numberOfBytesConsumedByDataConsumerIs($dataConsumer, $numberOfBytes))->isTestedInstance
 				->mock($dataConsumer)
 					->receive('newData')
-						->withArguments($data)
+						->withArguments(new data\data)
 							->once
 
 			->given(
