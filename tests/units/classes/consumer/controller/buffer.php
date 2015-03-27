@@ -20,6 +20,22 @@ class buffer extends units\test
 		;
 	}
 
+	function testNewData()
+	{
+		$this
+			->given(
+				$data = new data\data(uniqid())
+			)
+			->if(
+				$this->newTestedInstance(new data\data)
+			)
+			->then
+				->object($this->testedInstance->newData($data))
+					->isNotTestedInstance
+					->isEqualTo($this->newTestedInstance($data))
+		;
+	}
+
 	function testNumberOfBytesConsumedByDataConsumerIs()
 	{
 		$this
@@ -51,18 +67,7 @@ class buffer extends units\test
 							->once
 
 			->given(
-				$numberOfBytes = new data\data\numberOfBytes(1)
-			)
-			->if(
-				$this->testedInstance->numberOfBytesConsumedByDataConsumerIs($dataConsumer, $numberOfBytes)
-			)
-			->then
-				->mock($dataConsumer)
-					->receive('newData')
-						->withArguments(new data\data('ello world!'))
-							->once
-			->given(
-				$numberOfBytes = new data\data\numberOfBytes(4)
+				$numberOfBytes = new data\data\numberOfBytes(5)
 			)
 			->if(
 				$this->testedInstance->numberOfBytesConsumedByDataConsumerIs($dataConsumer, $numberOfBytes)
