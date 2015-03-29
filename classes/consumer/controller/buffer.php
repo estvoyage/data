@@ -24,7 +24,12 @@ final class buffer implements data\consumer\controller
 
 	function numberOfBytesConsumedByDataConsumerIs(data\consumer $dataConsumer, data\data\numberOfBytes $bytes)
 	{
-		$dataConsumer->newData(new data\data(substr($this->data, $bytes->asInteger) ?: ''));
+		$data = substr($this->data, $bytes->asInteger);
+
+		if ($data)
+		{
+			$dataConsumer->newData(new data\data($data));
+		}
 
 		return $this;
 	}

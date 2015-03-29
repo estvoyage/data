@@ -49,9 +49,7 @@ class buffer extends units\test
 			->then
 				->object($this->testedInstance->numberOfBytesConsumedByDataConsumerIs($dataConsumer, $numberOfBytes))->isTestedInstance
 				->mock($dataConsumer)
-					->receive('newData')
-						->withArguments(new data\data)
-							->once
+					->didNotReceiveAnyMessage
 
 			->given(
 				$data = new data\data('hello world!')
